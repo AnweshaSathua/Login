@@ -93,7 +93,8 @@
       </div>
 
       <!-- Submit button -->
-      <button type="submit" class="btn btn-primary w-100">Login</button>
+      <button type="button" class="btn btn-primary w-100" onclick="redirectToDashboard()">Login</button>
+
 
       <!-- Register link -->
       <p class="text-center mt-3">Not Having An Account?
@@ -115,6 +116,11 @@
       this.classList.toggle("fa-eye");
       this.classList.toggle("fa-eye-slash");
     });
+
+    function redirectToDashboard() {
+  window.location.href = "http://localhost:8084/auth/login"; // or an external URL
+}
+
   </script>
 </body>
 
