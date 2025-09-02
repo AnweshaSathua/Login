@@ -151,9 +151,9 @@
 
        // Role-based redirection
         const id = employeeId.toLowerCase();
-        if (id === "teamlead") {
+        if (employeeId === "teamlead") {
           window.location.href = "https://team-lead-rating.vercel.app/";
-        } else if (id === "developer") {
+        } else if (employeeId === "developer") {
           window.location.href = "https://employee-task-summary.vercel.app/";
         } else {
           alert("Unknown user role. Cannot redirect.");
