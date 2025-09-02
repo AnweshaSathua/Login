@@ -143,15 +143,7 @@
       if (response.ok) {
         const data = await response.json();
         alert("Login successful!");
-
-        // If backend gives you a token/session, store it
-        if (data.token) {
-          localStorage.setItem("authToken", data.token);
-        }
-
-        // Redirect to dashboard (update the path as needed)
-        window.location.href = "DASHBOARD.html";
-      } else {
+       } else {
         const error = await response.json();
         alert("Login failed: " + (error.message || "Invalid credentials"));
       }
