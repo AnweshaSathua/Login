@@ -111,11 +111,11 @@
     function submitForm() {
       var employeeId = document.getElementById('employeeId').value;
       var employeeName = document.getElementById('employeeName').value;
-      var employeeEmail = document.getElementById('employeeEmail').value;
+      var employeeRole = document.getElementById('employeeRole').value;
       var password = document.getElementById('password').value;
       var confirmPassword = document.getElementById('confirmPassword').value;
 
-      if (!employeeId || !employeeName || !employeeEmail || !password || !confirmPassword) {
+      if (!employeeId || !employeeName || !employeeRole || !password || !confirmPassword) {
         alert('Please fill out all required fields.');
         return;
       }
@@ -145,5 +145,6 @@
 
 </body>
 </html>
+
 
 
