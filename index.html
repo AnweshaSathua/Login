@@ -150,11 +150,14 @@
         }
 
        // Role-based redirection
-        if (employeeId.toLowerCase() === "teamLead") {
-          window.location.href = "https://team-lead-rating.vercel.app/"; // rating page
-        } else if (employeeId.toLowerCase() === "developer") {
-          window.location.href = "https://employee-task-summary.vercel.app/"; // task page
-        } 
+        const id = employeeId.toLowerCase();
+        if (id === "teamlead") {
+          window.location.href = "https://team-lead-rating.vercel.app/";
+        } else if (id === "developer") {
+          window.location.href = "https://employee-task-summary.vercel.app/";
+        } else {
+          alert("Unknown user role. Cannot redirect.");
+        }
       } else {
         const error = await response.json();
         alert("Login failed: " + (error.message || "Invalid credentials"));
