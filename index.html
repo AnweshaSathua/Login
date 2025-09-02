@@ -142,36 +142,33 @@
 
       if (response.ok) {
         const data = await response.json();
-        alert("Login successful!");
+        console.log("LoginResponse:", data);
+ 
+      alert(data.message || "Login successful!");
 
         // If backend gives you a token/session, store it
         if (data.token) {
           localStorage.setItem("authToken", data.token);
         }
 
-       // Role-based redirection
-        const id = employeeRole.toLowerCase();
-        if (id === "teamlead") {
-          window.location.href = "https://team-lead-rating.vercel.app/";
-        } else if (id === "developer") {
-          window.location.href = "https://employee-task-summary.vercel.app/";
-        } else {
-          alert("Unknown user role. Cannot redirect.");
-        }
+       // ✅ Use backend redirectUrl
+      if (data.redirectUrl) {
+        window.location.href = data.redirectUrl;
       } else {
-        const error = await response.json();
-        alert("Login failed: " + (error.message || "Invalid credentials"));
+        alert("No redirect URL provided for this role.");
       }
-    } catch (err) {
-      console.error(err);
-      alert("Error connecting to server.");
+ 
+    } else {
+      const error = await response.json();
+      alert("Login failed: " + (error.message || "Invalid credentials"));
     }
+  } catch (err) {
+    console.error("Error:", err);
+    alert("Error connecting to server.");
   }
+}
 </script>
 
 </body>
 
 </html>
-
-
-
