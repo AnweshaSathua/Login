@@ -108,43 +108,70 @@
   </div>
 
   <script>
-    function submitForm() {
-      var employeeId = document.getElementById('employeeId').value;
-      var employeeName = document.getElementById('employeeName').value;
-      var employeeRole = document.getElementById('employeeRole').value;
-      var password = document.getElementById('password').value;
-      var confirmPassword = document.getElementById('confirmPassword').value;
+  async function submitForm() {
+    var employeeId = document.getElementById('employeeId').value;
+    var employeeName = document.getElementById('employeeName').value;
+    var employeeRole = document.getElementById('employeeRole').value;
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
 
-      if (!employeeId || !employeeName || !employeeRole || !password || !confirmPassword) {
-        alert('Please fill out all required fields.');
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        alert('Passwords do not match.');
-        return;
-      }
-
-     alert('Registration successful! Redirecting to login...');
-     window.location.href = "index.html";
+    if (!employeeId || !employeeName || !employeeRole || !password || !confirmPassword) {
+      alert('Please fill out all required fields.');
+      return;
     }
 
-    function togglePassword(fieldId, icon) {
-      const input = document.getElementById(fieldId);
-      if (input.type === "password") {
-        input.type = "text";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
+    if (password !== confirmPassword) {
+      alert('Passwords do not match.');
+      return;
+    }
+
+    // Create the object to send
+    const data = {
+      employeeId: employeeId,
+      employeeName: employeeName,
+      employeeRole: employeeRole,
+      password: password
+    };
+
+    try {
+      // Call backend API (adjust URL to your backend endpoint)
+      const response = await fetch("http://localhost:5000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        alert("Registration successful! Redirecting to login...");
+        window.location.href = "index.html";
       } else {
-        input.type = "password";
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
+        const error = await response.json();
+        alert("Error: " + error.message);
       }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again.");
     }
-  </script>
+  }
+
+  function togglePassword(fieldId, icon) {
+    const input = document.getElementById(fieldId);
+    if (input.type === "password") {
+      input.type = "text";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    } else {
+      input.type = "password";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }
+</script>
+
 
 </body>
 </html>
-
 
 
