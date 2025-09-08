@@ -155,7 +155,7 @@
  
       // ✅ Redirect user as per backend
       if (data.redirectUrl) {
-        window.location.href = data.redirectUrl;
+        window.location.href = data.redirectUrl + "?employeeId=" + encodeURIComponent(data.employeeId) + "&employeeName=" + encodeURIComponent(data.employeeName);
       } else {
         alert("No redirect URL provided for this role.");
       }
@@ -173,4 +173,3 @@
 </body>
 
 </html>
-
