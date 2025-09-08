@@ -146,6 +146,9 @@
  
       alert(data.message || "Login successful!");
 
+      // ✅ Save employeeId in localStorage so task page can use it
+       localStorage.setItem("employeeId", employeeId);
+
         // If backend gives you a token/session, store it
         if (data.token) {
           localStorage.setItem("authToken", data.token);
@@ -172,4 +175,3 @@
 </body>
 
 </html>
-
