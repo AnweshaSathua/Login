@@ -92,6 +92,14 @@
         <label class="form-check-label" for="formRemember">Remember me</label>
       </div>
 
+      <!-- Custom Centered Alert -->
+   <div id="customAlert" class="d-none position-fixed top-50 start-50 translate-middle bg-white shadow-lg rounded p-4 text-center"
+     style="z-index: 1055; width: 300px;">
+      <p id="alertMessage" class="mb-3 fw-bold"></p>
+      <button class="btn btn-primary w-100" onclick="closeAlert()">OK</button>
+    </div>
+
+
       <!-- Submit button -->
       <button type="button" class="btn btn-primary w-100" onclick="redirectToDashboard()">Login</button>
 
@@ -124,7 +132,7 @@
   const password = document.getElementById("formPassword").value.trim();
  
   if (!employeeId || !password) {
-    alert("Please enter both Employee ID and Password.");
+    showAlert("Please enter both Employee ID and Password.");
     return;
   }
  
@@ -144,7 +152,7 @@
       const data = await response.json();
       console.log("LoginResponse:", data);
  
-      alert(data.message || "Login successful!");
+      showAlert(data.message || "Login successful!");
  
       // ✅ Save all details from backend into localStorage
       localStorage.setItem("employeeId", data.employeeId);
@@ -157,16 +165,26 @@
       if (data.redirectUrl) {
         window.location.href = data.redirectUrl + "?employeeId=" + encodeURIComponent(data.employeeId) + "&employeeName=" + encodeURIComponent(data.employeeName);
       } else {
-        alert("No redirect URL provided for this role.");
+        showAlert("No redirect URL provided for this role.");
       }
     } else {
       const error = await response.json();
-      alert("Login failed: " + (error.message || "Invalid credentials"));
+      showAlert("Login failed: " + (error.message || "Invalid credentials"));
     }
   } catch (err) {
     console.error("Error:", err);
-    alert("Error connecting to server.");
+    showAlert("Error connecting to server.");
   }
+
+  function showAlert(message) {
+  document.getElementById("alertMessage").textContent = message;
+  document.getElementById("customAlert").classList.remove("d-none");
+}
+
+function closeAlert() {
+  document.getElementById("customAlert").classList.add("d-none");
+}
+
 }
 </script>
 
