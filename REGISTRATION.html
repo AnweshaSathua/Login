@@ -147,6 +147,15 @@
           ></i>
         </div>
 
+        <!-- Custom Centered Alert -->
+<div id="customAlert" class="d-none position-fixed top-50 start-50 translate-middle bg-white shadow-lg rounded p-4 text-center"
+     style="z-index: 1055; width: 300px;">
+  <p id="alertMessage" class="mb-3 fw-bold"></p>
+  <button class="btn btn-primary w-100" onclick="closeAlert()">OK</button>
+</div>
+
+
+
         <button
           type="button"
           class="btn btn-primary w-100"
@@ -177,12 +186,12 @@
           !password ||
           !confirmPassword
         ) {
-          alert("Please fill out all required fields.");
+          showAlert("Please fill out all required fields.");
           return;
         }
 
         if (password !== confirmPassword) {
-          alert("Passwords do not match.");
+          showAlert("Passwords do not match.");
           return;
         }
 
@@ -209,15 +218,15 @@
           );
 
           if (response.ok) {
-            alert("Registration successful! Redirecting to login...");
+            showAlert("Registration successful! Redirecting to login...");
             window.location.href = "index.html";
           } else {
             const error = await response.json();
-            alert("Error: " + error.message);
+            showAlert("Error: " + error.message);
           }
         } catch (err) {
           console.error(err);
-          alert("Something went wrong. Please try again.");
+          showAlert("Something went wrong. Please try again.");
         }
       }
 
@@ -233,8 +242,16 @@
           icon.classList.add("fa-eye");
         }
       }
+
+      function showAlert(message) {
+  document.getElementById("alertMessage").textContent = message;
+  document.getElementById("customAlert").classList.remove("d-none");
+}
+
+      function closeAlert() {
+       document.getElementById("customAlert").classList.add("d-none");
+      }
+
     </script>
   </body>
 </html>
-
-
