@@ -14,33 +14,39 @@
     />
     <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background: url('photo-1485470733090-0aae1788d5af.avif') center center fixed;
-      background-size: cover;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .main-container {
-      display: flex;
-      width: 90%;
-      max-width: 2000px;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .logo-section {
-      flex: 0 0 30%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+        font-family: 'Poppins', sans-serif;
+        background: url('photo-1485470733090-0aae1788d5af.avif') center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .main-container {
+        display: flex;
+        width: 90%;
+        max-width: 2000px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      } 
+      
+      .form-section {
+        flex: 0 0 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .logo-section {
+        flex: 0 0 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 
     /* .logo-section img {
       max-width: 100px;
@@ -48,14 +54,6 @@
       margin: 20px 0;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     } */
-
-    .login-section {
-      flex: 0 0 70%;
-      max-width: 700px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
 
     /* Different sizes for the two logos */
   .logo-large {
@@ -69,47 +67,48 @@
     }
 
     .card {
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      padding: 30px;
-      width: 100%;
-      max-width: 2000px;
-    }
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        width: 100%;
+        max-width: 600px;
+        background: #fff;
+      }
 
     .btn-primary {
-      background-color: #007bff;
-      border: none;
-      border-radius: 8px;
-      padding: 10px;
-      font-weight: 500;
-    }
+        background-color: #007bff;
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+        font-weight: 500;
+      }
 
-    .btn-primary:hover {
-      background-color: #0056b3;
-    }
+     .btn-primary:hover {
+        background-color: #0056b3;
+      }
 
-    .password-wrapper {
-      position: relative;
-      width: 100%;
-    }
+     .password-wrapper {
+        position: relative;
+        width: 100%;
+      }
 
     .password-wrapper input {
-      width: 100%;
-      padding: 10px 40px 10px 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
-    }
+        width: 100%;
+        padding: 10px 40px 10px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
 
     .password-toggle {
-      position: absolute;
-      top: 70%;
-      right: 10px;
-      transform: translateY(-50%);
-      cursor: pointer;
-      font-size: 14px;
-      color: #555;
-    }
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 16px;
+        color: #555;
+      }
 
     
   /* Responsive */
@@ -336,4 +335,5 @@
     </script>
   </body>
 </html>
+
 
