@@ -13,28 +13,37 @@
       margin: 0;
       padding: 0;
       height: 100vh;
-    }
-
-    .full-height {
-      height: 100vh;
-    }
-
-    .logo-section {
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .main-container {
+      display: flex;
+      width: 90%;
+      max-width: 1200px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .logo-section {
+      flex: 1;
+      display: flex;
       flex-direction: column;
-      background: rgba(255, 255, 255, 0.2); /* optional overlay */
-      padding: 20px;
+      align-items: center;
+      justify-content: center;
     }
 
     .logo-section img {
-      max-width: 80%;
+      max-width: 250px;
       height: auto;
-      margin: 15px 0;
+      margin: 20px 0;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     }
 
     .login-section {
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -88,57 +97,54 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="row full-height">
-      <!-- Left Side: Logos -->
-      <div class="col-md-6 logo-section">
-        <img src="Logo1.png" alt="Logo 1">
-        <img src="Logo.png" alt="Logo 2">
-        <!-- Add more logos as needed -->
-      </div>
+  <div class="main-container">
+    <!-- Left Side: Logos -->
+    <div class="logo-section">
+      <img src="Logo1.png" alt="Logo 1">
+      <img src="Logo.png" alt="Logo 2">
+    </div>
 
-      <!-- Right Side: Login -->
-      <div class="col-md-6 login-section">
-        <div class="card">
-          <h2 class="text-center mb-4 fw-bold">Employee Rating</h2>
+    <!-- Right Side: Login -->
+    <div class="login-section">
+      <div class="card">
+        <h2 class="text-center mb-4 fw-bold">Employee Rating</h2>
 
-          <form>
-            <!-- Employee ID -->
-            <div class="mb-3">
-              <label class="form-label" for="formEmployeeId">Employee ID</label>
-              <input type="text" id="formEmployeeId" class="form-control" placeholder="Employee ID" />
-            </div>
+        <form>
+          <!-- Employee ID -->
+          <div class="mb-3">
+            <label class="form-label" for="formEmployeeId">Employee ID</label>
+            <input type="text" id="formEmployeeId" class="form-control" placeholder="Employee ID" />
+          </div>
 
-            <!-- Password -->
-            <div class="mb-3 password-wrapper">
-              <label class="form-label" for="formPassword">Password</label>
-              <input type="password" id="formPassword" class="form-control" placeholder="Password" />
-              <i class="fa-regular fa-eye password-toggle" id="togglePassword"></i>
-            </div>
+          <!-- Password -->
+          <div class="mb-3 password-wrapper">
+            <label class="form-label" for="formPassword">Password</label>
+            <input type="password" id="formPassword" class="form-control" placeholder="Password" />
+            <i class="fa-regular fa-eye password-toggle" id="togglePassword"></i>
+          </div>
 
-            <!-- Remember Me -->
-            <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="formRemember" checked />
-              <label class="form-check-label" for="formRemember">Remember me</label>
-            </div>
+          <!-- Remember Me -->
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="formRemember" checked />
+            <label class="form-check-label" for="formRemember">Remember me</label>
+          </div>
 
-            <!-- Custom Alert -->
-            <div id="customAlert"
-              class="d-none position-fixed top-50 start-50 translate-middle bg-white shadow-lg rounded p-4 text-center"
-              style="z-index: 1055; width: 300px;">
-              <p id="alertMessage" class="mb-3 fw-bold"></p>
-              <button class="btn btn-primary w-100" onclick="closeAlert()">OK</button>
-            </div>
+          <!-- Custom Alert -->
+          <div id="customAlert"
+            class="d-none position-fixed top-50 start-50 translate-middle bg-white shadow-lg rounded p-4 text-center"
+            style="z-index: 1055; width: 300px;">
+            <p id="alertMessage" class="mb-3 fw-bold"></p>
+            <button class="btn btn-primary w-100" onclick="closeAlert()">OK</button>
+          </div>
 
-            <!-- Login Button -->
-            <button type="button" class="btn btn-primary w-100" onclick="redirectToDashboard()">Login</button>
+          <!-- Login Button -->
+          <button type="button" class="btn btn-primary w-100" onclick="redirectToDashboard()">Login</button>
 
-            <!-- Register Link -->
-            <p class="text-center mt-3">Not Having An Account?
-              <a href="REGISTRATION.html" class="text-primary">Register</a>
-            </p>
-          </form>
-        </div>
+          <!-- Register Link -->
+          <p class="text-center mt-3">Not Having An Account?
+            <a href="REGISTRATION.html" class="text-primary">Register</a>
+          </p>
+        </form>
       </div>
     </div>
   </div>
