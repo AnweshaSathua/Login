@@ -20,14 +20,14 @@
 
     .main-container {
       display: flex;
-      width: 100%;
+      width: 90%;
       max-width: 1200px;
-      align-items: stretch;
+      align-items: center;
       justify-content: space-between;
       gap: 40px;
     }
 
-    .logo-section, .logo-section {
+    .logo-section {
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -36,31 +36,26 @@
     }
 
     .logo-section img {
-      max-width: 100px;
+      max-width: 250px;
       height: auto;
       margin: 20px 0;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     }
-    .logo-box {
-      background: #fff; /* white background */
-      padding: 40px 20px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+    .login-section {
+      flex: 1;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      width: 50%;
-      height: 60%; /* fill the parent flex height */
+      justify-content: center;
     }
 
     .card {
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    width: 100%;
-    max-width: 500px;
-    background: #fff;
-    height: 100%; /* match height of logo-box */
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      background: #fff;
     }
 
     .btn-primary {
@@ -105,11 +100,9 @@
   <div class="main-container">
     <!-- Left Side: Logos -->
     <div class="logo-section">
-      <div class="logo-box">
       <img src="logo1.png" alt="Logo 1">
       <img src="Logo.png" alt="Logo 2">
     </div>
-      </div>
 
     <!-- Right Side: Login -->
     <div class="login-section">
@@ -222,7 +215,3 @@
 </body>
 
 </html>
-
-
-
-
