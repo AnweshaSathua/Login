@@ -190,11 +190,15 @@ function closeAlert() {
 }
 
 }
+
+    // 🔹 Expose to global scope so the inline button onclick works
+  window.closeAlert = closeAlert;
 </script>
 
 </body>
 
 </html>
+
 
 
 
