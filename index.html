@@ -125,7 +125,7 @@
     this.classList.toggle("fa-eye");
     this.classList.toggle("fa-eye-slash");
   });
-
+  let pendingRedirectUrl = null; // 🔹 Store redirect URL until OK is clicked
   // Handle login
   async function redirectToDashboard() {
   const employeeId = document.getElementById("formEmployeeId").value.trim();
@@ -163,10 +163,9 @@
  
       // ✅ Redirect user as per backend
       if (data.redirectUrl) {
-        window.location.href = data.redirectUrl + "?employeeId=" + encodeURIComponent(data.employeeId) + "&employeeName=" + encodeURIComponent(data.employeeName);
-      } else {
-        showAlert("No redirect URL provided for this role.");
-      }
+       pendingRedirectUrl  = data.redirectUrl + "?employeeId=" + encodeURIComponent(data.employeeId) + "&employeeName=" + encodeURIComponent(data.employeeName);
+      } 
+      showAlert(data.message || "Login successful!");
     } else {
       const error = await response.json();
       showAlert("Login failed: " + (error.message || "Invalid credentials"));
@@ -174,6 +173,7 @@
   } catch (err) {
     console.error("Error:", err);
     showAlert("Error connecting to server.");
+  }
   }
 
   function showAlert(message) {
@@ -183,6 +183,10 @@
 
 function closeAlert() {
   document.getElementById("customAlert").classList.add("d-none");
+
+ if (pendingRedirectUrl) {
+      window.location.href = pendingRedirectUrl;
+      pendingRedirectUrl = null; // reset 
 }
 
 }
@@ -191,5 +195,6 @@ function closeAlert() {
 </body>
 
 </html>
+
 
 
