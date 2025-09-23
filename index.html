@@ -35,18 +35,29 @@
       justify-content: center;
     }
 
-    .logo-section img {
-      max-width: 250px;
+    /* .logo-section img {
+      max-width: 100px;
       height: auto;
       margin: 20px 0;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-    }
+    } */
 
     .login-section {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    /* Different sizes for the two logos */
+  .logo-large {
+  max-width: 100px;
+  margin: 15px 0;
+  }
+
+    .logo-small {
+      max-width: 200px;
+      margin: 15px 0;
     }
 
     .card {
@@ -100,8 +111,8 @@
   <div class="main-container">
     <!-- Left Side: Logos -->
     <div class="logo-section">
-      <img src="logo1.png" alt="Logo 1">
-      <img src="Logo.png" alt="Logo 2">
+      <img src="logo1.png" alt="Logo 1" class="logo-large">
+      <img src="Logo.png" alt="Logo 2" class="logo-small">
     </div>
 
     <!-- Right Side: Login -->
@@ -215,3 +226,4 @@
 </body>
 
 </html>
+
