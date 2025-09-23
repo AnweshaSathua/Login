@@ -13,7 +13,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <style>
-    body {
+      body {
         font-family: 'Poppins', sans-serif;
         background: url('photo-1485470733090-0aae1788d5af.avif') center center fixed;
         background-size: cover;
@@ -24,6 +24,7 @@
         align-items: center;
         justify-content: center;
       }
+
       .main-container {
         display: flex;
         width: 90%;
@@ -31,15 +32,8 @@
         align-items: center;
         justify-content: space-between;
         gap: 20px;
-      } 
-      
-      .form-section {
-        flex: 0 0 70%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
-      
+
       .logo-section {
         flex: 0 0 30%;
         display: flex;
@@ -48,26 +42,30 @@
         justify-content: center;
       }
 
-    /* .logo-section img {
-      max-width: 100px;
-      height: auto;
-      margin: 20px 0;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-    } */
+      .logo-section img {
+        max-width: 200px;
+        margin: 15px 0;
+      }
 
-    /* Different sizes for the two logos */
-  
+      .form-section {
+        flex: 0 0 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-    .card {
+      /* Smaller registration card */
+      .form-section .card {
         border-radius: 15px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         padding: 30px;
         width: 100%;
-        max-width: 600px;
+        max-width: 450px; /* smaller card */
         background: #fff;
+        margin: 0 auto; /* center in section */
       }
 
-    .btn-primary {
+      .btn-primary {
         background-color: #007bff;
         border: none;
         border-radius: 8px;
@@ -75,16 +73,16 @@
         font-weight: 500;
       }
 
-     .btn-primary:hover {
+      .btn-primary:hover {
         background-color: #0056b3;
       }
 
-     .password-wrapper {
+      .password-wrapper {
         position: relative;
         width: 100%;
       }
 
-    .password-wrapper input {
+      .password-wrapper input {
         width: 100%;
         padding: 10px 40px 10px 10px;
         border: 1px solid #ccc;
@@ -92,7 +90,7 @@
         font-size: 14px;
       }
 
-    .password-toggle {
+      .password-toggle {
         position: absolute;
         top: 50%;
         right: 10px;
@@ -102,57 +100,39 @@
         color: #555;
       }
 
-    
-  /* Responsive */
-  @media (max-width: 992px) {
-    .main-container {
-      flex-direction: column;
-      width: 90%;
-    }
+      /* Responsive */
+      @media (max-width: 992px) {
+        .main-container {
+          flex-direction: column;
+        }
+        .logo-section,
+        .form-section {
+          flex: 1 1 100%;
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        .logo-section img {
+          max-width: 150px;
+        }
+      }
 
-    .logo-section, .login-section {
-      flex: 1 1 100%;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .logo-small {
-      max-width: 150px;
-    }
-
-    .logo-large {
-      max-width: 80px;
-    }
-
-    .card {
-      max-width: 100%;
-    }
-  }
-
-  @media (max-width: 400px) {
-    .logo-small {
-      max-width: 120px;
-    }
-
-    .logo-large {
-      max-width: 60px;
-    }
-
-    .card {
-      padding: 20px;
-    }
-
-    .password-wrapper input {
-      padding: 8px 35px 8px 8px;
-      font-size: 13px;
-    }
-
-    .btn-primary {
-      padding: 8px;
-      font-size: 14px;
-    }
-  }
-  </style>
+      @media (max-width: 576px) {
+        .logo-section img {
+          max-width: 120px;
+        }
+        .form-section .card {
+          padding: 20px;
+        }
+        .password-wrapper input {
+          padding: 8px 35px 8px 8px;
+          font-size: 13px;
+        }
+        .btn-primary {
+          padding: 8px;
+          font-size: 14px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="main-container">
@@ -327,6 +307,3 @@
     </script>
   </body>
 </html>
-
-
-
