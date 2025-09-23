@@ -22,12 +22,12 @@
       display: flex;
       width: 90%;
       max-width: 1200px;
-      align-items: center;
+      align-items: stretch;
       justify-content: space-between;
       gap: 40px;
     }
 
-    .logo-section {
+    .logo-section, .logo-section {
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -42,14 +42,16 @@
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     }
     .logo-box {
-  background: #fff; /* white background */
-  padding: 40px 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+      background: #fff; /* white background */
+      padding: 40px 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: 100%; /* fill the parent flex height */
+    }
 
 
     .login-section {
@@ -60,12 +62,13 @@
     }
 
     .card {
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      padding: 30px;
-      width: 100%;
-      max-width: 500px;
-      background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    height: 100%; /* match height of logo-box */
     }
 
     .btn-primary {
@@ -227,4 +230,5 @@
 </body>
 
 </html>
+
 
