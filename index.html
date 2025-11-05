@@ -185,16 +185,28 @@
           <!-- Login Button -->
           <button type="submit" class="btn btn-primary w-100">Login</button>
 
-          <!-- Register Link -->
+          
+        <!-- Register Link -->
           <p class="text-center mt-3">
             Not Having An Account?
             <a href="REGISTRATION.html" class="text-primary">Register</a>
           </p>
+
+          <!-- Forget Password -->
+          <p class="text-center mt-2">
+            Want to change password?
+            <a href="forget_password.html" class="text-primary">Forgot Password</a>
+          </p>
         </form>
+        <div id="customAlert"
+          class="d-none position-fixed top-50 start-50 translate-middle bg-white shadow-lg rounded p-4 text-center"
+          style="z-index: 1055; width: 300px;">
+          <p id="alertMessage" class="mb-3 fw-bold"></p>
+          <button class="btn btn-primary w-100" type="button" onclick="closeAlert()">OK</button>
+        </div>        
       </div>
     </div>
   </div>
-
   <script>
     // Toggle password visibility
     const togglePassword = document.getElementById("togglePassword");
@@ -253,7 +265,6 @@
         showAlert("Error connecting to server.");
       }
     }
-
     function showAlert(message) {
       document.getElementById("alertMessage").textContent = message;
       document.getElementById("customAlert").classList.remove("d-none");
@@ -266,3 +277,4 @@
 </body>
 
 </html>
+
