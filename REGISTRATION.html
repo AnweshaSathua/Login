@@ -149,7 +149,7 @@
       <div class="form-section">
         <div class="card">
           <h2 class="text-center mb-4 fw-bold">Employee Registration</h2>
-          <form id="registrationForm">
+          <form id="registrationForm" onkeydown="handleEnter(event)">
             <div class="mb-3">
               <label for="employeeId" class="form-label">Employee ID</label>
               <input
@@ -276,6 +276,12 @@
       function closeAlert() {
         document.getElementById("customAlert").classList.add("d-none");
       }
+      function handleEnter(event) {
+      if (event.key === "Enter") {
+      event.preventDefault();
+      submitForm();
+      }
+      }
 
       async function submitForm() {
         const employeeId = document.getElementById("employeeId").value;
@@ -328,4 +334,5 @@
     </script>
   </body>
 </html>
+
 
