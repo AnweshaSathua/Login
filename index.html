@@ -190,7 +190,7 @@
     </div>
   </div>
   <script>
-    // Toggle password visibility
+    
     const togglePassword = document.getElementById("togglePassword");
     const passwordField = document.getElementById("password");
 
@@ -201,21 +201,21 @@
       this.classList.toggle("fa-eye-slash");
     });
 
-    // --- NEW: Force Enter Key to Trigger Login ---
+    
     const inputFields = document.querySelectorAll("#username, #password");
     inputFields.forEach(field => {
         field.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
-                event.preventDefault(); // Stop default behavior
-                document.getElementById("loginBtn").click(); // Click the login button
+                event.preventDefault(); 
+                document.getElementById("loginBtn").click(); 
             }
         });
     });
-    // ---------------------------------------------
+    
 
-    // Form submit listener for login
+    
     document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault(); // prevent page refresh
+      e.preventDefault(); 
       redirectToDashboard();
     });
 
@@ -243,7 +243,7 @@
           localStorage.setItem("employeeName", data.employeeName);
           if (data.token) localStorage.setItem("authToken", data.token);
 
-          // Delay redirect slightly so user can read the alert, or remove setTimeout to go instantly
+          
           setTimeout(() => {
              if (data.redirectUrl) {
                 window.location.href = data.redirectUrl + "?employeeId=" +
@@ -276,3 +276,4 @@
 </body>
 
 </html>
+
