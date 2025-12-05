@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-   <style>
+  <style>
     body {
       font-family: 'Poppins', sans-serif;
       background: url('photo-1485470733090-0aae1788d5af.avif') center center fixed;
@@ -35,13 +35,6 @@
       justify-content: center;
     }
 
-    /* .logo-section img {
-      max-width: 100px;
-      height: auto;
-      margin: 20px 0;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-    } */
-
     .login-section {
       flex: 0 0 70%;
       max-width: 700px;
@@ -50,11 +43,10 @@
       justify-content: center;
     }
 
-    /* Different sizes for the two logos */
-  .logo-large {
-  max-width: 180px;
-  margin: 0;
-  }
+    .logo-large {
+      max-width: 180px;
+      margin: 0;
+    }
 
     .logo-small {
       max-width: 320px;
@@ -104,106 +96,96 @@
       color: #555;
     }
 
-    
-  /* Responsive */
-      @media (max-width: 992px) {
-        .main-container {
-          flex-direction: column;
-        }
-        .logo-section,
-        .form-section {
-          flex: 1 1 100%;
-          width: 100%;
-          margin-bottom: 20px;
-        }
-        .logo-section img {
-          max-width: 150px;
-        }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .main-container {
+        flex-direction: column;
       }
 
-      @media (max-width: 576px) {
-        .logo-section img {
-          max-width: 120px;
-        }
-        .form-section .card {
-          padding: 20px;
-        }
-        .password-wrapper input {
-          padding: 8px 35px 8px 8px;
-          font-size: 13px;
-        }
-        .btn-primary {
-          padding: 8px;
-          font-size: 14px;
-        }
+      .logo-section,
+      .form-section {
+        flex: 1 1 100%;
+        width: 100%;
+        margin-bottom: 20px;
       }
+
+      .logo-section img {
+        max-width: 150px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-section img {
+        max-width: 120px;
+      }
+
+      .form-section .card {
+        padding: 20px;
+      }
+
+      .password-wrapper input {
+        padding: 8px 35px 8px 8px;
+        font-size: 13px;
+      }
+
+      .btn-primary {
+        padding: 8px;
+        font-size: 14px;
+      }
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
   <div class="main-container">
-    <!-- Left Side: Logos -->
     <div class="logo-section">
       <img src="logo1.png" alt="Logo 1" class="logo-large" />
       <img src="Logo.png" alt="Logo 2" class="logo-small" />
     </div>
 
-    <!-- Right Side: Login -->
     <div class="login-section">
       <div class="card">
         <h2 class="text-center mb-4 fw-bold">Employee Rating</h2>
 
         <form id="loginForm">
-          <!-- Employee ID -->
           <div class="mb-3">
             <label class="form-label" for="username">Employee ID</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Employee ID" required />
           </div>
 
-          <!-- Password -->
           <div class="mb-3 password-wrapper">
             <label class="form-label" for="password">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" required />
             <i class="fa-regular fa-eye password-toggle" id="togglePassword"></i>
           </div>
 
-          <!-- Remember Me -->
           <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" id="formRemember" checked />
             <label class="form-check-label" for="formRemember">Remember me</label>
           </div>
 
-          <!-- Custom Alert -->
-          <div id="customAlert"
-            class="d-none position-fixed top-50 start-50 translate-middle bg-white shadow-lg rounded p-4 text-center"
-            style="z-index: 1055; width: 300px;">
-            <p id="alertMessage" class="mb-3 fw-bold"></p>
-            <button class="btn btn-primary w-100" type="button" onclick="closeAlert()">OK</button>
-          </div>
+          <button type="submit" id="loginBtn" class="btn btn-primary w-100">Login</button>
 
-          <!-- Login Button -->
-          <button type="submit" class="btn btn-primary w-100">Login</button>
-
-          
-        <!-- Register Link -->
           <p class="text-center mt-3">
             Not Having An Account?
             <a href="REGISTRATION.html" class="text-primary">Register</a>
           </p>
 
-          <!-- Forget Password -->
           <p class="text-center mt-2">
             Want to change password?
             <a href="forget_password.html" class="text-primary">Forgot Password</a>
           </p>
         </form>
+
         <div id="customAlert"
           class="d-none position-fixed top-50 start-50 translate-middle bg-white shadow-lg rounded p-4 text-center"
           style="z-index: 1055; width: 300px;">
           <p id="alertMessage" class="mb-3 fw-bold"></p>
           <button class="btn btn-primary w-100" type="button" onclick="closeAlert()">OK</button>
-        </div>        
+        </div>
+
       </div>
     </div>
   </div>
@@ -218,6 +200,18 @@
       this.classList.toggle("fa-eye");
       this.classList.toggle("fa-eye-slash");
     });
+
+    // --- NEW: Force Enter Key to Trigger Login ---
+    const inputFields = document.querySelectorAll("#username, #password");
+    inputFields.forEach(field => {
+        field.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Stop default behavior
+                document.getElementById("loginBtn").click(); // Click the login button
+            }
+        });
+    });
+    // ---------------------------------------------
 
     // Form submit listener for login
     document.getElementById("loginForm").addEventListener("submit", function (e) {
@@ -249,13 +243,17 @@
           localStorage.setItem("employeeName", data.employeeName);
           if (data.token) localStorage.setItem("authToken", data.token);
 
-          if (data.redirectUrl) {
-            window.location.href = data.redirectUrl + "?employeeId=" +
-              encodeURIComponent(data.employeeId) + "&employeeName=" +
-              encodeURIComponent(data.employeeName);
-          } else {
-            showAlert("No redirect URL provided for this role.");
-          }
+          // Delay redirect slightly so user can read the alert, or remove setTimeout to go instantly
+          setTimeout(() => {
+             if (data.redirectUrl) {
+                window.location.href = data.redirectUrl + "?employeeId=" +
+                encodeURIComponent(data.employeeId) + "&employeeName=" +
+                encodeURIComponent(data.employeeName);
+             } else {
+                showAlert("No redirect URL provided for this role.");
+             }
+          }, 1000);
+          
         } else {
           const error = await response.json();
           showAlert("Login failed: " + (error.message || "Invalid credentials"));
@@ -265,6 +263,7 @@
         showAlert("Error connecting to server.");
       }
     }
+
     function showAlert(message) {
       document.getElementById("alertMessage").textContent = message;
       document.getElementById("customAlert").classList.remove("d-none");
@@ -277,4 +276,3 @@
 </body>
 
 </html>
-
