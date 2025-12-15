@@ -59,13 +59,12 @@
         justify-content: center;
       }
 
-      /* Smaller registration card */       
       .form-section .card {
         border-radius: 15px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         padding: 30px;
         width: 100%;
-        max-width: 600px; /* smaller card */
+        max-width: 600px; 
       }
 
       .btn-primary {
@@ -103,7 +102,6 @@
         color: #555;
       }
 
-      /* Responsive */
       @media (max-width: 992px) {
         .main-container {
           flex-direction: column;
@@ -148,7 +146,7 @@
         <div class="card">
           <h2 class="text-center mb-4 fw-bold">Employee Registration</h2>
           
-          <form id="registrationForm" onkeydown="handleEnter(event)">
+          <form id="registrationForm">
             <div class="mb-3">
               <label for="employeeId" class="form-label">Employee ID</label>
               <input
@@ -237,7 +235,7 @@
               <button type="button" id="alertOkBtn" class="btn btn-primary w-100" onclick="closeAlert()">OK</button>
             </div>
 
-            <button type="button" class="btn btn-primary w-100" onclick="submitForm()">
+            <button type="button" id="registerBtn" class="btn btn-primary w-100" onclick="submitForm()">
               Register
             </button>
 
@@ -268,38 +266,31 @@
         document.getElementById("alertMessage").textContent = message;
         const alertBox = document.getElementById("customAlert");
         alertBox.classList.remove("d-none");
-        
-        // **NEW: Automatically focus the OK button when alert opens**
         document.getElementById("alertOkBtn").focus();
       }
 
       function closeAlert() {
         document.getElementById("customAlert").classList.add("d-none");
-        
-        // Optional: Return focus to the first input field
-        // document.getElementById("employeeId").focus();
+        document.getElementById("employeeId").focus();
       }
+      const formInputs = document.querySelectorAll('#registrationForm input');
+      const alertOkBtn = document.getElementById("alertOkBtn");
+      const customAlert = document.getElementById("customAlert");
 
-      // **NEW: Enhanced Enter Key Handler**
-      function handleEnter(event) {
-        if (event.key === "Enter") {
-          event.preventDefault(); // Stop default form submission
-          
-          const alertBox = document.getElementById("customAlert");
-          const okBtn = document.getElementById("alertOkBtn");
-
-          // Check if the alert is currently visible
-          if (!alertBox.classList.contains("d-none")) {
-             // If alert is visible, click the OK button to close it
-             okBtn.click();
-          } else {
-             // If alert is NOT visible, submit the registration form
-             submitForm();
+      formInputs.forEach(input => {
+        input.addEventListener("keypress", function(event) {
+          if (event.key === "Enter") {
+            event.preventDefault(); 
+            if (!customAlert.classList.contains("d-none")) {
+               alertOkBtn.click();
+            } 
+            else {
+               submitForm();
+            }
           }
-        }
-      }
-
-      async function submitForm() {
+        });
+      });
+        async function submitForm() {
         const employeeId = document.getElementById("employeeId").value;
         const employeeName = document.getElementById("employeeName").value;
         const employeeEmail = document.getElementById("employeeEmail").value.trim();
@@ -314,8 +305,8 @@
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(employeeEmail)) {
-        showAlert("Please enter a valid email address.");
-        return;
+          showAlert("Please enter a valid email address.");
+          return;
         }
 
         if (password !== confirmPassword) {
