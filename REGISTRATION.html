@@ -34,23 +34,23 @@
         gap: 10px;
       }
 
-     .logo-section {
-      flex: 0 0 30%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+      .logo-section {
+        flex: 0 0 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 
       .logo-large {
-  max-width: 180px;
-  margin: 0;
-  }
+        max-width: 180px;
+        margin: 0;
+      }
 
-    .logo-small {
-      max-width: 320px;
-      margin: 0;
-    }
+      .logo-small {
+        max-width: 320px;
+        margin: 0;
+      }
 
       .form-section {
         flex: 0 0 70%;
@@ -59,7 +59,7 @@
         justify-content: center;
       }
 
-      /* Smaller registration card */      
+      /* Smaller registration card */       
       .form-section .card {
         border-radius: 15px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -139,16 +139,15 @@
   </head>
   <body>
    <div class="main-container">
-    <!-- Left Side: Logos -->
     <div class="logo-section">
       <img src="logo1.png" alt="Logo 1" class="logo-large">
       <img src="Logo.png" alt="Logo 2" class="logo-small">
     </div>
 
-      <!-- Right Section: Registration Form -->
       <div class="form-section">
         <div class="card">
           <h2 class="text-center mb-4 fw-bold">Employee Registration</h2>
+          
           <form id="registrationForm" onkeydown="handleEnter(event)">
             <div class="mb-3">
               <label for="employeeId" class="form-label">Employee ID</label>
@@ -173,7 +172,7 @@
                 required
               />
             </div>
-            
+             
             <div class="mb-3">
             <label for="employeeEmail" class="form-label">Employee Email</label>
             <input
@@ -197,7 +196,6 @@
               />
             </div>
 
-            <!-- Password -->
             <div class="mb-3 password-wrapper">
               <label for="password" class="form-label">Password</label>
               <input
@@ -214,7 +212,6 @@
               ></i>
             </div>
 
-            <!-- Confirm Password -->
             <div class="mb-3 password-wrapper">
               <label for="confirmPassword" class="form-label">Confirm Password</label>
               <input
@@ -231,14 +228,13 @@
               ></i>
             </div>
 
-            <!-- Custom Alert -->
             <div
               id="customAlert"
               class="d-none position-fixed top-50 start-50 translate-middle bg-white shadow-lg rounded p-4 text-center"
               style="z-index: 1055; width: 300px;"
             >
               <p id="alertMessage" class="mb-3 fw-bold"></p>
-              <button class="btn btn-primary w-100" onclick="closeAlert()">OK</button>
+              <button type="button" id="alertOkBtn" class="btn btn-primary w-100" onclick="closeAlert()">OK</button>
             </div>
 
             <button type="button" class="btn btn-primary w-100" onclick="submitForm()">
@@ -270,17 +266,37 @@
 
       function showAlert(message) {
         document.getElementById("alertMessage").textContent = message;
-        document.getElementById("customAlert").classList.remove("d-none");
+        const alertBox = document.getElementById("customAlert");
+        alertBox.classList.remove("d-none");
+        
+        // **NEW: Automatically focus the OK button when alert opens**
+        document.getElementById("alertOkBtn").focus();
       }
 
       function closeAlert() {
         document.getElementById("customAlert").classList.add("d-none");
+        
+        // Optional: Return focus to the first input field
+        // document.getElementById("employeeId").focus();
       }
+
+      // **NEW: Enhanced Enter Key Handler**
       function handleEnter(event) {
-      if (event.key === "Enter") {
-      event.preventDefault();
-      submitForm();
-      }
+        if (event.key === "Enter") {
+          event.preventDefault(); // Stop default form submission
+          
+          const alertBox = document.getElementById("customAlert");
+          const okBtn = document.getElementById("alertOkBtn");
+
+          // Check if the alert is currently visible
+          if (!alertBox.classList.contains("d-none")) {
+             // If alert is visible, click the OK button to close it
+             okBtn.click();
+          } else {
+             // If alert is NOT visible, submit the registration form
+             submitForm();
+          }
+        }
       }
 
       async function submitForm() {
@@ -334,5 +350,3 @@
     </script>
   </body>
 </html>
-
-
